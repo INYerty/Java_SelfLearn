@@ -1,4 +1,4 @@
-package t25_9_21.Example_64;
+package Self_Exec._extends.Example_64;
 
 public class ConstructionBank extends Bank {
     double year;

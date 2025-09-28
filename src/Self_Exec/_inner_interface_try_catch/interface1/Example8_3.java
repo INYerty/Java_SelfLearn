@@ -1,4 +1,4 @@
-package t25_9_22.interfaceExec;
+package Self_Exec._inner_interface_try_catch.interface1;
 
 interface SpeakHello{
     void speak();
@@ -10,7 +10,7 @@ class HelloMachine {
     }
 }
 
-public class Example8_3{
+public class  Example8_3{
     public static void main(String[] args) {
         HelloMachine machine = new HelloMachine();
         machine.turnOn(new SpeakHello() {

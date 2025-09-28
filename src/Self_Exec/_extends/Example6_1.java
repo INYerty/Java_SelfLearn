@@ -1,4 +1,4 @@
-package t25_9_21;
+package Self_Exec._extends;
 
 class People{
     float weight,height;

@@ -1,0 +1,83 @@
+
+/*
+* Runnable r = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("这是匿名类实现的run方法");
+    }
+};
+r.run();
+*/
+
+
+
+
+/*
+* abstract class Animal {
+    abstract void makeSound();
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // 这里直接创建了一个匿名类来继承 Animal
+        Animal dog = new Animal() {//new Animal() { ... }
+        *
+        *
+        * 这段代码在运行时会 动态生成一个匿名子类，
+        * 这个子类继承了 Animal，并且实现了它所有的抽象方法。
+        然后，new 的是这个 匿名子类的对象，不是 Animal 本身。
+        *
+        *
+            @Override
+            void makeSound() {
+                System.out.println("汪汪！");
+            }
+        };
+
+        dog.makeSound();
+    }
+}
+*/
+
+
+
+
+/*接口
+*
+* 3.	抽象类同样可以实现接口。
+package mytest;
+
+public interface Test3 {
+public void paint();
+public void foo();
+}
+package mytest;
+
+public abstract class Test4 implements Test3{
+public void paint() {
+}
+public void foo() {
+}
+
+}
+*/
+
+
+/*interface ButtonClickListener {
+    void onClick();
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // 使用匿名内部类实现接口
+        ButtonClickListener listener = new ButtonClickListener() {
+            @Override
+            public void onClick() {
+                System.out.println("按钮被点击啦！");
+            }
+        };
+
+        listener.onClick();
+    }
+}
+*/

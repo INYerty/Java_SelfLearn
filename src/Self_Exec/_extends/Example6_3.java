@@ -1,4 +1,4 @@
-package t25_9_21;
+package Self_Exec._extends;
 
 class A{
     float computer(float x,float y){                //被重写的方法
