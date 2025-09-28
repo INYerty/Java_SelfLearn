@@ -1,0 +1,146 @@
+实验030：
+定义一个抽象类几何图形类，该类包含计算面积和计算周长两个抽象方法。再定义一个圆类和一个长方形类继承几何图形类并实现抽象方法（自己设计属性）。通过父类定义子类构建的方式创建圆和长方形对象，调用抽象方法。
+
+
+public abstract class Geomitric {
+
+	public Geomitric() {
+		
+	}
+	
+	public abstract void perimeter();
+	public abstract void area();
+}
+
+
+
+public class Circle extends Geomitric{
+	private double radius;
+	
+	public Circle() {
+		
+	}
+	
+	public Circle(double radius) {
+		this.radius = radius;
+	}
+
+	public void perimeter() {
+		System.out.println("圆的周长为"+2*Math.PI*radius);
+	}
+
+	public void area() {
+		System.out.println("圆的面积为"+Math.PI*radius*radius);
+	}
+
+	
+}
+
+
+
+
+public class Rectangle extends Geomitric{
+
+	private double width;
+	private double length;
+	
+	public Rectangle() {
+		
+	}
+	
+	public Rectangle(double width,double length) {
+		this.width = width;
+		this.length = length;
+	}
+	
+	public void perimeter() {
+		System.out.println("长方形的周长为"+2*(width + length));
+	}
+
+	public void area() {
+		System.out.println("长方形的面积为"+width * length);
+	}
+
+}
+
+
+
+public class Exercise030 {
+
+	public static void main(String[] args) {
+
+		Geomitric circle = new Circle(3.5);
+		circle.perimeter();
+		circle.area();
+		
+		Geomitric rectangle = new Rectangle(1.5, 2.5);
+		rectangle.perimeter();
+		rectangle.area();
+	}
+
+}
+
+
+
+
+实验031：
+设计一个求3个整数最大值的类，要求在外部类中设计一个求2个整数最大值的成员内部类，利用该成员内部类的对象实现求3个整的的最大值；设计测试类，随意给出3个整数求出最大值。
+
+
+public class Max3int {
+
+    private int a,b,c;
+	 
+    public Max3int () {
+ 
+    }
+    public Max3int (int a,int b,int c) {
+        this.a=a;
+        this.b=b;
+        this.c=c;
+    }
+ 
+    //求两个整数最大数的内部类
+    public class Max2int {
+        int x,y,max;
+        Max2int(){
+ 
+        }
+        Max2int(int x,int y) {
+            this.x=x;
+            this.y=y;
+        }
+        public int get2max() {
+            max=x;
+            if(x<=y){
+            	max=y;
+            }
+            return max;
+        }
+    }
+    
+    
+    public void get3max() {
+    	//先利用内部类先求出两个数的最大数
+    	Max2int max1=new Max2int(a,b);
+        int m1= max1.get2max();
+        
+        //再利用内部类求出三个数的最大数
+        Max2int max2=new Max2int(m1,c);
+        int m2=max2.get2max();
+        System.out.println("三个数中最大的是"+m2);
+    }
+}
+
+
+
+//测试类
+public class Exercise031 {
+
+	public static void main(String[] args) {
+
+		Max3int max1=new Max3int(10,15,9);
+        	max1.get3max();
+	}
+
+}

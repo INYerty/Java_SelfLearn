@@ -1,0 +1,75 @@
+实验029：
+定义一个多边形接口，接口含有一个求面积的方法和一个求周长的方法。定义一个长方形类和一个三角形类实现前边的接口及接口内的方法，长方形类有长和宽两个成员属性，三角形类有a、b、c三个成员属性分表表示三条边。输出不同形状的周长和面积。（提示：三角形面积公式参考第五次作业实验018）.
+
+public interface Polygon {
+
+	public void perimeter() ;
+	public void area();
+}
+
+public class Triangle implements Polygon{
+	private int a;
+	private int b;
+	private int c;
+	
+	public Triangle() {
+		
+	}
+	
+	public Triangle(int a,int b,int c) {
+		this.a = a;
+		this.b = b;
+		this.c = c;
+	}
+
+	public void perimeter() {
+		int perimeter = a + b + c;
+		System.out.println("三角形的周长为" + perimeter);
+	}
+
+	public void area() {
+		float s = (a + b + c) / 2f;
+		float area = (float) Math.sqrt(s * (s - a) * (s - b) * (s - c));
+		System.out.println("三角形的面积为" + area);
+	}
+
+}
+
+public class Rectangle implements Polygon{
+	private int length;
+	private int width;
+	
+	public Rectangle() {
+		
+	}
+
+	public Rectangle(int length,int width) {
+		this.length = length;
+		this.width = width;
+	}
+	
+	public void perimeter() {
+		int perimeter = 2*(length + width);
+		System.out.println("长方形的周长为" + perimeter);
+	}
+
+	public void area() {
+		int area = length * width;
+		System.out.println("长方形的面积为" + area);
+	}
+}
+
+public class Exercise029 {
+
+	public static void main(String[] args) {
+
+		Triangle triangle = new Triangle(1,1,1);
+		triangle.perimeter();
+		triangle.area();
+		
+		Rectangle rectangle = new Rectangle(2, 3);
+		rectangle.perimeter();
+		rectangle.area();
+	}
+
+}

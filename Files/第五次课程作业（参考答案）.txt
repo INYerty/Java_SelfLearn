@@ -1,0 +1,104 @@
+当用户输入一个日期时，判断这个日期是否合法，如果合法就完成输出，否则赋值为0；
+闰年，2月有多少天？
+规则：4年一闰，100年不闰年；400年一闰。
+通过构造器完成初始化。
+
+
+//日期类
+public class MyDate {
+
+	private int year;
+	private int month;
+	private int day;
+	
+	public MyDate() {
+		
+	}
+
+	public MyDate(int year,int month,int day) {
+		this.setYear(year);
+		this.setMonth(month);
+		this.setDay(day);
+	}
+
+	public void setYear(int year) {
+		if(year < 1) {
+			reSet();
+			return;
+		}
+		this.year = year;
+	}
+
+	public void setMonth(int month) {
+		if(year < 1 || month < 1 || month > 12) {
+			reSet();
+			return;
+		}
+		this.month = month;
+	}
+
+	public void setDay(int day) {
+		if(year < 1 || month < 1 || month > 12 || day < 1 || day > 31) {
+			reSet();
+			return;
+		}else {
+			if(month == 2) {
+				if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+					//闰年
+					if(day > 29) {
+						reSet();
+						return;
+					}
+				}else {
+					//非闰年
+					if(day > 28) {
+						reSet();
+						return;
+					}
+				}
+			}else if(month == 4 || month == 6 || month == 9 || month == 11) {
+				if(day > 30) {
+					reSet();
+					return;
+				}
+			}
+		}
+		this.day = day;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+	
+	public int getMonth() {
+		return month;
+	}
+	
+	public int getDay() {
+		return day;
+	}
+	
+	//将年月日置零的私有成员方法
+	private void reSet() {
+		this.year = 0;
+		this.month = 0;
+		this.day = 0;
+	}
+}
+
+//主类
+public class Exercise {
+
+	public static void main(String[] args) {
+
+		MyDate date = new MyDate();
+		date.setYear(2024);
+		date.setMonth(3);
+		date.setDay(31);
+		
+		System.out.println("year is: "+date.getYear());
+		System.out.println("month is:"+date.getMonth());
+		System.out.println("day is: "+date.getDay());
+	}
+
+}

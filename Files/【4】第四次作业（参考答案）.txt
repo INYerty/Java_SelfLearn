@@ -1,0 +1,118 @@
+实验013：
+设计一个动物的类，动物有名称（例：老虎、狮子、鱼、青蛙）和类别（如：哺乳动物、两栖动物）两个成员属性。创建带有参数的构造器为动物的成员属性赋值。创建一个不含参数的方法输出动物的名称和类别。创建一个带有参数的方法，通过传递参数输出动物是否需要冬眠。
+public class Animal {
+
+	public String name;
+	public String type;
+	
+	public Animal() {
+		
+	}
+	
+	public Animal(String name,String type) {
+		this.name = name;
+		this.type = type;
+	}
+	
+	public void paint() {
+		System.out.println(name + "是" + type);
+	}
+	
+	public void live(String live) {
+		System.out.println(name + live);
+	}
+}
+
+public class Exercise013 {
+
+	public static void main(String[] args) {
+		
+		Animal tiger = new Animal("老虎", "哺乳动物");
+		tiger.paint();
+		tiger.live("不需要冬眠");
+		
+		Animal frog = new Animal("青蛙", "两栖动物");
+		frog.paint();
+		frog.live("需要冬眠");
+		
+	}
+
+}
+
+
+
+实验014：
+创建一个1-10的整型数组，并计算数组内所有数字的和。
+public class Exercise014 {
+
+	public static void main(String[] args) {
+		
+		int[] num = {1,2,3,4,5,6,7,8,9,10};
+		
+		int sum = 0;
+		for(int i = 0;i<num.length;i++) {
+			sum += num[i];
+		}
+
+		System.out.println(sum);
+		
+		
+	}
+
+}
+
+
+实验015：
+创建一个二维数组存储一个4*4的单位矩阵并输出，矩阵如下所示：
+1  0  0  0
+0  1  0  0
+0  0  1  0
+0  0  0  1
+
+public class Exercise015 {
+
+	public static void main(String[] args) {
+
+		int[][] num = new int[4][4];
+		for(int i=0;i<4;i++) {
+			for(int j=0;j<4;j++) {
+				if(i == j) {
+					num[i][j] = 1;
+				}else {
+					num[i][j] = 0;
+				}
+			}
+		}
+		
+		for(int i=0;i<4;i++) {
+			for(int j=0;j<4;j++) {
+				System.out.print(num[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+
+}
+
+
+实验016：
+给定一个大于1的整数，判断它是不是素数（只能被1和它本身整除的整数是素数）。
+
+public class Exercise36 {
+
+	public static void main(String[] args) {
+
+		int num = 11;
+        	
+        	for (int i = 2; i < num; i++) {
+            		if (num % i == 0) {
+                		System.out.println("不是素数");
+                		break;
+            		}else if(i > num/2){
+                		System.out.println("是素数");
+               	 		break;
+            		}
+        	}
+	}
+
+}

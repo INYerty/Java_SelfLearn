@@ -1,0 +1,119 @@
+实验033：
+读取一个本地文件，并将文件内容输出。
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
+public class Exercise033 {
+
+	public static void main(String[] args) {
+		
+		try {
+			File f = new File("C:/Users/51178/Desktop/readfile.txt");//此处换成自己的文件路径
+			FileReader fr = new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+			String line = null;
+			//循环读取多行
+			while ((line = br.readLine()) != null) {
+			    System.out.println(line);
+			}
+			br.close();
+			fr.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+}
+
+
+实验034：
+将数字1-100写入到一个本地桌面文件中，数字以空格分隔。
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+public class Exercise034 {
+
+	public static void main(String[] args) {
+		
+		try {
+			File f = new File("C:\\Users\\51178\\Desktop\\num.txt");//此处换成自己的桌面路径
+			FileWriter fw = new FileWriter(f);//创建一个写文件的输出流
+			PrintWriter pw = new PrintWriter(fw);//创建一个输出的缓存，提升输出的效率
+			for (int x = 1; x <= 100; x++) {
+				pw.print(x + " ");
+            }
+			pw.close();//关闭缓存
+			fw.close();//关闭输出流
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+}
+
+
+
+
+实验035：
+从控制台任意输入几个整型数字，并计算其和输出，输入end结束输入，如果输入的不是数字则总和-1（使用异常处理）。
+
+public class Exercise035 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int count = 0;
+        Scanner scan = new Scanner(System.in);
+        // 从键盘接收数据
+        System.out.println("输入数字:");
+        // 判断是否还有输入
+        while (scan.hasNextLine()) {
+            String x = scan.nextLine();
+            if(x.equals("end"))//输入end结束输入
+            	break;
+            try {
+            	count = count + Integer.parseInt(x);
+            }catch (Exception e) {
+				// TODO: handle exception
+            	count = count - 1;
+			}
+        }
+        System.out.println(count);
+        scan.close();
+	}
+
+}
+
+
+实验036：
+创建一个整数集合，随意添加一些数字，然后遍历输出。
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class Exercise036 {
+
+	public static void main(String[] args) {
+
+		ArrayList<Integer> list = new ArrayList<>();
+		list.add(1);
+		list.add(1);
+		list.add(3);
+		list.add(5);
+		for(int i=0;i<list.size();i++) {
+			System.out.println(list.get(i));
+		}
+		System.out.println("-----------分割线-------------");
+		HashSet<Integer> set = new HashSet<>();
+		set.add(1);
+		set.add(1);
+		set.add(3);
+		set.add(2);
+		for(int i : set) {
+			System.out.println(i);
+		}
+	}
+
+}

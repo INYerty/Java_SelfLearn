@@ -1,0 +1,273 @@
+实验017：
+编写一个圆类，该类有一个成员属性“半径”，该类包含计算圆面积、计算圆周长两个成员方法。（注意封装，将成员属性设置为私有，并且限定圆的半径大于0小于100）。
+
+
+public class Circle {
+
+	private double radius;
+	
+	public Circle() {
+		
+	}
+	
+	public Circle(double radius) {
+		setRadius(radius);
+	}
+
+	public void setRadius(double radius) {
+		if(radius < 0 || radius > 100)
+			return;
+		this.radius = radius;
+	}
+	
+	public double getRadius() {
+		return radius;
+	}
+	
+	public double getPerimeter() {
+		double perimeter;
+		perimeter = 2 * Math.PI * radius;
+		return perimeter;
+	}
+	
+	public double getArea() {
+		double area;
+		area = Math.PI * radius * radius;
+		return area;
+	}
+}
+
+public class Exercise017 {
+
+	public static void main(String[] args) {
+		Circle circle = new Circle(5);
+		System.out.println("圆的半径："+circle.getRadius());
+		System.out.println("圆的周长："+circle.getPerimeter());
+		System.out.println("圆的面积："+circle.getArea());
+	}
+
+}
+
+
+实验018：
+给定3个整数，判断能否创建三角形；
+如果能构建三角形，提示是直角三角形还是等边三角形等腰三角形还是普通三角形；最后输出三角形面积；
+注：开根号的方法Math.sqrt(n);
+三角形的面积=根号下[s(s-a)(s-b)(s-c)]，s = (a + b + c) / 2，a、b、c是三角形的三个边。
+
+
+public class Exercise018 {
+
+	public static void main(String[] args) {
+		 
+        int a = 1;
+        int b = 1;
+        int c = 1;
+        
+        if (a + b > c && a + c > b && b + c > a) {
+            System.out.println("可以创建三角形");
+            if (a == b && b == c) {
+                System.out.println("三角形为等边三角形");
+            } else if (a == b || a == c || b == c) {
+                System.out.println("三角形为等腰三角形");
+            } else if (a * a + b * b == c * c || a * a + c * c == b * b || c * c + b * b == a * a) {
+                System.out.println("三角形为直角三角形");
+            } else {
+                System.out.println("三角形为普通三角形");
+            }
+            float s = (a + b + c) / 2f;
+            float area = (float) Math.sqrt(s * (s - a) * (s - b) * (s - c));
+            System.out.println("三角形的面积是：" + area);
+        } else {
+            System.out.println("不可以创建三角形");
+        }
+	}
+
+}
+
+
+
+
+实验019：
+创建学生类完成下面的问题：
+（1）创建学生类，包括属性学号、姓名、年龄，且都是私有的。
+（2）声明设置各个属性的方法，限制学号大于0小于10000，年龄大于0小于100。
+（3）声明获取各个属性的方法。
+ (4) 在主类中创建几个学生设置属性，输出学生信息。
+
+
+public class Student {
+
+	private int no;
+	private String name;
+	private int age;
+	
+	public Student () {
+		
+	}
+	
+	public Student (int no,String name,int age) {
+		setNo(no);
+		setName(name);
+		setAge(age);
+	}
+
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		if(no < 0 || no > 10000) {
+			return;
+		}
+		this.no = no;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		if(age <= 0 || age > 100) {
+			return;
+		}
+		this.age = age;
+	}
+
+	public void paint() {
+		System.out.println(name + "的学号是" + no + "年龄" + age);
+	}
+	
+}
+
+public class Exercise019 {
+
+	public static void main(String[] args) {
+
+		Student stu1 = new Student();
+		stu1.setNo(1001);
+		stu1.setName("tom");
+		stu1.setAge(15);
+		
+		Student stu2 = new Student(1002,"lily",16);
+		
+		stu1.paint();
+		stu2.paint();
+	}
+}
+
+
+实验020：
+统计1~100之间出现了几次数字9
+
+
+public class Exercise020 {
+
+	public static void main(String[] args) {
+
+		int count = 0;//记录9的个数
+        	for (int i = 1; i <= 100 ; i++) {
+            		if (i % 10 == 9) {
+                		//看个位是不是9
+                		count++;
+            		}
+           	 	if (i / 10 == 9) {
+                		//看十位是不是9
+               	 		count++;
+            		}
+        	}
+        	System.out.println(count);
+	}
+
+}
+
+
+实验021：
+给定年、月、日判断这一天是这一年的第几天（注意年月日的合法格式和闰年的判断）。
+提示：可以使用switch判断语句。
+
+
+public class Exercise021 {
+
+	public static void main(String[] args) {
+
+		int year = 2023;
+		int month = 8;
+		int day = 1;
+		boolean yearFlag = false;	//存储是否为闰年，是true，不是false，默认false
+        
+        if(year < 1 || month < 1 || month > 12 || day < 1 || day > 31) {
+        	printError();	//调用提示错误的方法，该方法定义在最后
+        	return;
+        }else {
+        	if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+				//闰年
+				yearFlag = true;
+			}
+        	if(month == 2) {
+				if(yearFlag) {
+					if(day > 29) {
+						printError();
+						return;
+					}
+				}else {
+					if(day > 28) {
+						printError();
+						return;
+					}
+				}
+			}else if(month == 4 || month == 6 || month == 9 || month == 11) {
+				if(day > 30) {
+					printError();
+					return;
+				}
+			}
+        }
+ 
+        switch (month) {
+            case 12:
+                day += 30;
+            case 11:
+                day += 31;
+            case 10:
+                day += 30;
+            case 9:
+                day += 31;
+            case 8:
+                day += 31;
+            case 7:
+                day += 30;
+            case 6:
+                day += 31;
+            case 5:
+                day += 30;
+            case 4:
+                day += 31;
+            case 3:
+                if (yearFlag) {
+                    day += 29;
+                } else {
+                    day += 28;
+                }
+            case 2:
+                day += 31;
+            case 1:
+                System.out.println("这是" + year + "年" + "第" + day + "天");
+                break;
+            default:
+            	printError();
+                break;
+ 
+        }
+	}
+	
+	//提示错误的方法
+	public static void printError() {
+		System.out.println("请输入正确的时间");
+	}
+
+}
+
