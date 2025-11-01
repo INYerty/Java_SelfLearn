@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单标签学习</title>
+</head>
+<body>
+<!--form表单:
+        action: 提交的url地址
+        method: 提交的方式
+            get: 通过url地址提交数据,数据会显示在url地址后面 ?name=tom&age=18
+                特点":
+                1.如果表单中有隐私数据,不能使用get方式提交(不安全)
+                2.get请求的的大小的有限,不适合提交大量数据
+            post: 通过请求体提交数据,数据不会显示在url地址后面
+                特点:
+                1.安全性高
+                2.没有数据大小限制,适合提交大量数据
+-->
+<form action="/save" method="post">
+    姓名:<input name="name" type="text">
+    年龄:<input name="age" type="text">
+    <input type="submit" value="提交按钮">
+    <!--    ?name=tom&age=18-->
+    <!--    注意:表单项要想采集数据,必须要有name属性,表示表单项的名称-->
+    密码:<input name="password" type="password"> <!--密码框-->
+    性别:<input name="男" type="checkbox">男</input><input name="女" type="checkbox">女</input>
+    文件:<input type="file">
+    时间:<input type="date"><input type="time"><input type="datetime-local">
+    隐藏域:<input name="hid" type="hidden" value="隐藏域的值">
+
+    提交<input type="submit">
+    重置<input type="reset">
+    按钮<input type="button">
+
+
+</form>
+
+</body>
+</html>

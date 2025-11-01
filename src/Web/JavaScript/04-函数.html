@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数Function</title>
+</head>
+<body>
+<script>
+    //没有指定参数和返回值的函数，重载没了
+    function functionAdd(parameters1, parameters2) {
+        return parameters1 + parameters2;
+    }
+    let result = functionAdd(10, 20, 40);//实参多余形参，忽略多余实参
+    console.log(result);//30
+
+
+    //匿名函数
+    //函数表达式
+    let add = function(a,b){
+        return a + b;
+    }
+    //箭头函数
+    let add2 = (a,b)=>{
+        return a + b;
+    }
+
+    let add3 = (a,b,c)=>{
+        return a*b+c;
+    }
+
+    let result2 = add(5,10);
+    console.log(result2);//15
+    let result3 = add2(20,50);
+    console.log(result3);//50
+
+
+    console.log(typeof(add));
+    console.log(typeof(add2));
+
+</script>
+
+</body>
+</html>

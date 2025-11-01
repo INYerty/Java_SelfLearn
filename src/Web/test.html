@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--行内样式-->
+    <!--    <span style="color: cyan">Hello</span>-->
+
+    <!--        内部样式-->
+    <style>
+        /*元素选择器  优先级最低*/
+        /*span{*/
+        /*    color:#b2b2b2;*/
+        /*}*/
+        /*类选择器  优先级次之*/
+        /*.cls{*/
+        /*    color: blue;*/
+        /*}*/
+        /*.cls2{*/
+        /*    color: gray;*/
+        /*}*/
+        /*ID选择器  优先级最高*/
+        #time {
+            color: #0000ff;
+        }
+        a {
+            color: gray;
+            text-decoration: none; /*去除下划线*/
+        }
+        /*为所有的段落设置行高*/
+        /*p标签是段落标签*/
+        /*通过设置行高，可以增加段落的可读性*/
+        p {
+            line-height: 2em;/*行高是2倍的行间距*/
+            /*缩进：2em; !*首行缩进2个字符*!*/
+            text-indent: 2em; /*首行缩进2个字符*/
+
+        }
+
+        h1{
+            text-align: center;
+        }
+        /*页面居中显示*/
+        #content-container{
+            width: 70%;
+            margin: 0 auto;
+        }
+
+    </style>
+    <!--    外部样式-->
+    <!--    <link rel = "stylesheet" href = "new.css">-->
+
+<!--    下面的是标签页的题目  不是正文标题-->
+    <title >10月25日起 深中通道西人工岛启动文旅试运营</title>
+
+
+</head>
+
+
+
+<body>
+<div id="content-container">
+    <h1>&lt10月25日起 深中通道西人工岛启动文旅试运营&gt</h1>
+    <!--_blank新窗口打开  _self本窗口打开-->
+    <a href="https://www.cctv.com/" target="_blank"> 央视网 </a>
+
+    <!--&nbsp是空格-->
+    <span class="cls">&nbsp&nbsp2025年10月22日 20:07</span>
+
+    <!--    <span class="cls2">666666</span>-->
+    <span class="cls" id="time"> Time</span>
+
+    <!--定义一个视频-->
+
+    <!--video属性的说明：
+        src：视频文件路径
+        controls：显示视频控件（播放/暂停/音量等）
+        autoplay：自动播放
+        width：视频宽度  只设置一个数字即可。另一个会等比例缩放
+        height：视频高度
+            单位：px（像素）
+               %：百分比（相对于父元素的百分比   video的父元素是body）
+        loop：循环播放
+    -->
+    <br><br>
+    <video src="video/Counter-strike 2 2025.10.24 - 18.38.12.03.DVR.mp4" controls autoplay loop width="100%"></video>
+    <br><br><br><br><br><br><br><br>
+
+    <!--audio属性的说明：-->
+    <!--    src：音频文件路径-->
+    <!--    controls：显示音频控件（播放/暂停/音量等）-->
+    <!--    音量调节：音频控件自带音量调节功能-->
+    <!--    默认音量是100%，可以通过JS代码进行调节-->
+    <!--    autoplay：自动播放-->
+    <!--    loop：循环播放-->
+    <audio src = "audio\美人鱼-林俊杰-93151-320.mp3" controls loop></audio>
+
+    <P>
+        <!--b标签表示加粗
+            strong标签表示强调
+            em标签表示强调，一般表现为斜体
+            u标签表示下划线
+            i标签表示斜体
+            s标签表示删除线-->
+
+        <b>ACM/ICPC简介及纳新</b>
+        <br>
+        <strong>ACM/ICPC简介：</strong>
+
+        <em>ACM国际大学生程序设计竞赛（简称ACM-ICPC）是由国际计算机界具有悠久历史的权威性组织ACM学会（Association for Computing Machinery）主办，
+            是世界上公认的规模最大、水平最高、参与人数最多的大学生程序设计竞赛，其宗旨是使大学生能通过计算机充分展示自己分析问题和 解决问题的能力。
+            ACM-ICPC赛事是目前国内高校承办的唯一一项具有国际影响的计算机竞赛，受到教育界和工业界的高度重视和承认。</em>
+    </P>
+    <br>
+    <strong><u><i>纳新：</i></u></strong>
+    <br>
+    <p>如果你想深入学习编程，并且和全国最杰出的计算机程序员比赛交流，加入到这个团队里来，期待着你的加入和精彩表现！！！
+        你有兴趣吗？请先看看下面的几个问题：
+        1.你是否对程序的设计和编写有浓厚的兴趣？兴趣是坚持的动力。
+        2.你是否有毅力去做这件事情？训练的时间很长，短期内不会出成绩。
+        3.你是否有足够的心理承受力去面对失败和挫折？题目难，竞争激烈。
+        4.你是否能很好地与人相处？因为我们是一个团队。
+        如果以上问题你都是“YES”，那么我们热烈的欢迎你的加入。信箱: sdibtacm@gmail.com。</p>
+
+
+
+    <P>大一同学第一学期如果OJ上做中文题超过150道。利用寒假到下学期初如能完成英文题1145-1191,可以直接加入集训队，有机会代表学校参加省赛和区域赛，期待你的加入。
+
+        Problem分类：
+        初学者(1000-1012) C语言(1500-1551)简单题(1800-1931) 数据结构(2600-2755) 算法(1288-1391) 《ACM程序设计》(1134-1192) 《挑战编程》(1013-1125) USACO Training(2300-2393)
+        第一届山东省赛题目(2400-2409),第三届山东省赛题目(3240-3249),第四届山东省赛题目(3230-3239)，第八届山东省赛题目(3263-3273)
+
+        HOME Back
+    </P>
+
+    <!--引入一张图片，img/circle.gif-->
+    <!--img标签属性说明：
+        src：指定图片路径
+            1.相对路径：相对于当前html文件所在位置的路径
+                1.1：./ 表示当前文件夹（./可以省略）
+                1.2：../ 表示上一级文件夹
+            2.绝对路径：从盘符开始的完整路径（不推荐使用
+            3.网络路径：http:// 或 https:// 开头的完整路径
+
+        width：图片宽度
+        height：图片高度
+            单位：px（像素）
+               %：百分比（相对于父元素的百分比   img的父元素是body）
+        alt：图片无法显示时，显示的替代文本
+
+        -->
+    <img src="./img/circle.gif" width = "100%">
+    <img src="https://ali-cdn.educoder.net/images/avatars/User/b" width="100">
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

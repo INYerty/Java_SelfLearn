@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Tlias智能学习辅助系统</title>
+    <style>
+        /* 全局样式重置 */
+        body {
+            margin: 0;
+            font-family: "微软雅黑", sans-serif;
+        }
+
+        /* 顶部导航栏样式 */
+        .navbar {
+            background-color: #2a65da;
+            padding: 15px 30px;
+            display: flex; /* 让内容在同一行 */
+            /*flex-direction: column;*/
+            justify-content: space-between; /* 左右对齐 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        /* 标题样式 */
+        .navbar h1 {
+            font-weight: bold; /* 加粗 */
+            font-size: 22px;
+            margin: 0;
+            color: #0dfdd9;
+            /*字体为楷体*/
+            font-family: "楷体", serif;
+        }
+
+        /* 退出链接样式 */
+        .navbar a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline; /* 鼠标悬停时加下划线 */
+        }
+
+
+        /*--------------------------------------------------*/
+        /*<!-- HTML + CSS：搜索表单区域 -->*/
+        /* 搜索区域容器 */
+        .search-section {
+            padding: 18px 30px;
+            display: flex;
+            justify-content: center; /* 居中显示表单 */
+        }
+
+        /* 表单整体水平布局 */
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* 表单项间距 */
+            background: #fff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            flex-wrap: wrap; /* 小屏时换行，保证响应式 */
+        }
+
+        /* 单个表单项：标签 + 控件 水平排列 */
+        .form-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 标签样式 */
+        .form-item label {
+            font-size: 14px;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        /* 输入框与下拉样式 */
+        .search-form input[type = "text"], .search-form select {
+            padding: 8px 10px;
+            font-size: 14px;
+            border: 1px solid #d8d8d8;
+            border-radius: 6px;
+            background: #fafafa;
+            margin: 20px 0;
+        }
+
+        /* 按钮组 */
+        .form-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* 查询按钮（主操作） */
+        .btn-query {
+            background-color: #477de4;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 清空按钮（次操作） */
+        .btn-reset {
+            background: #fff;
+            color: #333;
+            border: 1px solid #d0d0d0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 悬停效果 */
+        .btn-query:hover {
+            opacity: 0.95;
+        }
+
+        .btn-reset:hover {
+            background: #f7f7f7;
+        }
+
+        /* 小屏优化：适度压缩间距与控件宽度 */
+        @media (max-width: 740px) {
+            .search-form {
+                gap: 12px;
+            }
+
+            .form-item label {
+                display: none;
+            }
+
+            /* 屏窄时隐藏标签，靠 placeholder */
+            .search-form input[type="text"],
+            .search-form select {
+                padding: 8px;
+            }
+        }
+
+
+        .table-section {
+            width: 90%;
+            margin: 40px auto;
+            background: #fff;
+            padding: 25px 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-section h2 {
+            text-align: left;
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 20px;
+            border-left: 6px solid #3b82f6;
+            padding-left: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        thead {
+            background-color: #f4f6f8;
+        }
+
+        th, td {
+            padding: 12px 10px; /* 增加单元格内边距 */
+            border-bottom: 1px solid #ddd; /* 添加底部边框 */
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+
+        }
+
+        .edit-btn, .delete-btn {
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+
+        }
+
+        .edit-btn {
+            background-color: #3b82f6;
+            color: white;
+            margin-right: 8px;
+        }
+
+        .edit-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .delete-btn {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #dc2626;
+        }
+
+
+        /* === 页脚版权区域样式 === */
+        .footer {
+            background-color: #2a65da; /* 顶部导航栏相同背景 */
+            color: #ffffff; /* 白色字体 */
+            text-align: center; /* 内容居中 */
+            padding: 20px 0; /* 上下留白 */
+            font-size: 14px;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            border-top: 20px; /* 顶部细线，呼应整体主题 solid #3bf670*/
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        #container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+
+
+<body>
+<div id="container">
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <h1>Tlias智能学习辅助系统</h1>
+        <a href="#">退出登录</a>
+    </div>
+
+    <!-- ========== 第二部分：搜索表单区域 ========== -->
+    <!-- HTML + CSS：搜索表单区域 -->
+
+    <div class="search-section">
+        <form action="/search" class="search-form" method="post">
+            <div class="form-item">
+                <label for="name">姓名：</label>
+                <!--            placeholder提示信息  在文本输入框-->
+                <input aria-label="姓名" id="name" name="name" placeholder="请输入姓名" type="text">
+            </div>
+
+            <div class="form-item">
+                <label for="gender">性别：</label>
+                <select aria-label="性别" id="gender" name="gender">
+                    <option value="">请选择</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+            </div>
+
+            <div class="form-item">
+                <label for="position">职位：</label>
+                <select aria-label="职位" id="position" name="position">
+                    <option value="noChosen">请选择</option>
+                    <option value="班主任">班主任</option>
+                    <option value="讲师">讲师</option>
+                    <option value="学工主管">学工主管</option>
+                    <option value="教研主管">教研主管</option>
+                    <option value="咨询师">咨询师</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn-query" type="submit">查询</button>
+                <button class="btn-reset" type="reset">清空</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- 第三部分：表格展示区 -->
+    <section class="table-section">
+        <h2>教师信息展示</h2>
+        <table>
+            <!--thead定义的是表头-->
+            <thead>
+            <!--tr是表格行标签 表头一般就一行所以只有一个tr 有加粗效果-->
+            <tr>
+                <!--th表示表头单元格-->
+                <th>姓名</th>
+                <th>性别</th>
+                <th>头像</th>
+                <th>职位</th>
+                <th>入职日期</th>
+                <th>最后操作时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <!--tbody定义的是表格主体-->
+            <tbody>
+            <!--tr表示第一行-->
+            <tr>
+                <!--td定义普通单元格-->
+                <td>令狐冲</td>
+                <td>男</td>
+                <td><img alt="令狐冲" class="avatar" src="../img/nikodog.jpg"></td>
+                <td>讲师</td>
+                <td>2018-03-15</td>
+                <td>2025-10-20 09:45</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+            <!--tr表示第二行-->
+            <tr>
+                <td>任盈盈</td>
+                <td>女</td>
+                <td><img alt="任盈盈" class="avatar" src="https://i.imgur.com/teuKfDy.png"></td>
+                <td>咨询师</td>
+                <td>2019-07-01</td>
+                <td>2025-10-21 14:30</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+            <!--tr表示第三行-->
+            <tr>
+                <td>岳不群</td>
+                <td>男</td>
+                <td><img alt="岳不群" class="avatar" src="https://i.imgur.com/1VdYV1k.png"></td>
+                <td>班主任</td>
+                <td>2015-09-10</td>
+                <td>2025-10-18 11:22</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>石智文</td>
+                <td>男</td>
+                <td><img alt="岳不群" class="avatar" src="https://i.imgur.com/1VdYV1k.png"></td>
+                <td>市长</td>
+                <td>2025-09-10</td>
+                <td>2025-10-18 11:22</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>石智文</td>
+                <td>男</td>
+                <td><img alt="岳不群" class="avatar" src="https://i.imgur.com/1VdYV1k.png"></td>
+                <td>市长</td>
+                <td>2025-09-10</td>
+                <td>2025-10-18 11:22</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>石智文</td>
+                <td>男</td>
+                <td><img alt="岳不群" class="avatar" src="https://i.imgur.com/1VdYV1k.png"></td>
+                <td>市长</td>
+                <td>2025-09-10</td>
+                <td>2025-10-18 11:22</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>石智文</td>
+                <td>男</td>
+                <td><img alt="岳不群" class="avatar" src="https://i.imgur.com/1VdYV1k.png"></td>
+                <td>市长</td>
+                <td>2025-09-10</td>
+                <td>2025-10-18 11:22</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>石智文</td>
+                <td>男</td>
+                <td><img alt="岳不群" class="avatar" src="https://i.imgur.com/1VdYV1k.png"></td>
+                <td>市长</td>
+                <td>2025-09-10</td>
+                <td>2025-10-18 11:22</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>石智文</td>
+                <td>男</td>
+                <td><img alt="岳不群" class="avatar" src="https://i.imgur.com/1VdYV1k.png"></td>
+                <td>市长</td>
+                <td>2025-09-10</td>
+                <td>2025-10-18 11:22</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>石智文</td>
+                <td>男</td>
+                <td><img alt="岳不群" class="avatar" src="https://i.imgur.com/1VdYV1k.png"></td>
+                <td>市长</td>
+                <td>2025-09-10</td>
+                <td>2025-10-18 11:22</td>
+                <td>
+                    <button class="edit-btn">编辑</button>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 第四部分：页脚版权区域 -->
+    <footer class="footer">
+        <p>江苏传智播客教育科技股份有限公司</p>
+        <p>版权所有 copyright 2006-2024 All Rights Reserved</p>
+    </footer>
+</div>
+
+</body>
+
+</html>

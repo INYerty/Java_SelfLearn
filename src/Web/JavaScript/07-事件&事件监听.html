@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>change this</h1>
+    <button id = "btn1">点我一下试试？</button>
+
+<script>
+    //1、获取DOM对象
+    let btnclick = document.querySelector('#btn1');
+    let h1 = document.querySelector('h1');
+
+    btnclick.addEventListener('click',()=>{
+        h1.innerHTML = 'changed!';
+        console.log("按钮被点击了！，h1标签内容被修改了！");
+    })
+
+</script>
+
+
+</body>
+</html>

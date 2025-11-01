@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-DOM</title>
+</head>
+<body>
+<h1 id = "title1">111</h1>
+<h1>1-2</h1>
+<h2>222</h2>
+<h3>333</h3>
+
+<script>
+    //1、修改第一个h1标签中的文本内容
+    //1.1、获取DOM对象
+    // let h1 = document.querySelector("#title1");
+    let h1 = document.querySelector('h1');
+    let hs = document.querySelectorAll('h1');
+
+
+    //2.2 获取DOM对象中的属性或方法
+    h1.innerHTML = '修改后的文本';
+    hs[0].innerHTML = '修改后的第一个h1标签文本';
+    hs[1].innerHTML = '修改后的第二个h1标签文本';
+
+</script>
+
+
+</body>
+</html>

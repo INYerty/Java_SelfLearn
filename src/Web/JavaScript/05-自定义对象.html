@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let person = {
+    //     name: "John",
+    //     age: 30,
+    //
+    //     sayHello:function(name,age){
+    //         console.log("大家好，我的名字叫"+this.name+",今年"+this.age+"岁了！");
+    //         //console.log(`大家好，我的名字叫${this.name},今年${this.age}岁了！`);
+    //     },
+    //     sing:function(name){
+    //         console.log(this.name+"正在唱歌");
+    //     },
+    //     num(){
+    //         return 100;
+    //     },
+    //     //不要用箭头函数定义对象的方法
+    //     sang:()=>{//注意：箭头函数中，this不指向当前对象，而是指向父级 [object Window]全局对象
+    //         alert(this.name+"悠悠的唱着歌");
+    //     }
+    // }
+    //
+    // person.sayHello();
+    // console.log(person.name);
+    // person.sing();
+    // person.sang();
+    // let a = person.num();
+    // alert(a);
+
+    //3、JSON - json对象标记法
+    let person ={
+        name:"itcast",
+        age:18,
+        gender:'男'
+    }
+    alert(JSON.stringify(person)); //将json对象转换为字符串
+
+    let personJson = '{"name":"INYert","age":20}';
+    let personObj = JSON.parse(personJson);
+    let name = personObj.name;
+    alert(name);
+
+
+
+
+</script>
+
+</body>
+</html>
